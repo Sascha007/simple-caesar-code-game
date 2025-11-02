@@ -2,9 +2,15 @@ import React from 'react';
 
 interface SuccessScreenProps {
   onPlayAgain: () => void;
+  gameStats: { timeElapsed: number; attemptsMade: number };
 }
 
-const SuccessScreen: React.FC<SuccessScreenProps> = ({ onPlayAgain }) => {
+const SuccessScreen: React.FC<SuccessScreenProps> = ({ onPlayAgain, gameStats }) => {
+  const formatTime = (seconds: number): string => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins}:${secs.toString().padStart(2, '0')}`;
+  };
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-900 via-emerald-900 to-teal-900 flex items-center justify-center p-4">
       <div className="max-w-2xl w-full bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl p-8 md:p-12 text-center">
@@ -24,6 +30,19 @@ const SuccessScreen: React.FC<SuccessScreenProps> = ({ onPlayAgain }) => {
             of joining the ranks of ancient cryptographers! Caesar himself would be impressed 
             by your code-breaking skills. 🏛️✨
           </p>
+        </div>
+
+        <div className="grid grid-cols-2 gap-4 mb-8">
+          <div className="bg-blue-500/20 rounded-lg p-6 border border-blue-400/50">
+            <div className="text-4xl mb-2">⏱️</div>
+            <p className="text-blue-200 text-sm mb-1">Time Taken</p>
+            <p className="text-2xl font-bold text-white">{formatTime(gameStats.timeElapsed)}</p>
+          </div>
+          <div className="bg-green-500/20 rounded-lg p-6 border border-green-400/50">
+            <div className="text-4xl mb-2">🎯</div>
+            <p className="text-green-200 text-sm mb-1">Attempts Used</p>
+            <p className="text-2xl font-bold text-white">{gameStats.attemptsMade}</p>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
