@@ -45,6 +45,8 @@
     "title": "Congratulations!",
     "subtitle": "You've cracked Caesar's code! 🏆",
     "message": "You've successfully decoded the secret message and proven yourself worthy of joining the ranks of ancient cryptographers! Caesar himself would be impressed by your code-breaking skills. 🏛️✨",
+    "timeTaken": "Time Taken",
+    "attemptsUsed": "Attempts Used",
     "achievement1": "Master Decoder",
     "achievement2": "Quick Thinker",
     "achievement3": "Sharp Mind",

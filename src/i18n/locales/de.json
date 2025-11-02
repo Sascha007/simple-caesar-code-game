@@ -45,6 +45,8 @@
     "title": "Glückwunsch!",
     "subtitle": "Du hast Caesars Code geknackt! 🏆",
     "message": "Du hast die geheime Nachricht erfolgreich entschlüsselt und bewiesen, dass du würdig bist, den Reihen der antiken Kryptographen beizutreten! Caesar selbst wäre von deinen Code-Knack-Fähigkeiten beeindruckt. 🏛️✨",
+    "timeTaken": "Benötigte Zeit",
+    "attemptsUsed": "Verwendete Versuche",
     "achievement1": "Meister-Entschlüssler",
     "achievement2": "Schnelldenker",
     "achievement3": "Scharfer Verstand",
