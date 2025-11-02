@@ -4,7 +4,7 @@ import { normalizeText } from '../utils/caesar';
 interface GameScreenProps {
   encryptedMessage: string;
   originalMessage: string;
-  onSuccess: () => void;
+  onSuccess: (stats: { timeElapsed: number; attemptsMade: number }) => void;
   onFailure: () => void;
 }
 
@@ -70,7 +70,9 @@ const GameScreen: React.FC<GameScreenProps> = ({
     if (normalizedGuess === normalizedOriginal) {
       setFeedback('🎉 Correct! You cracked the code!');
       setIsGameActive(false);
-      setTimeout(() => onSuccess(), 1500);
+      const timeElapsed = GAME_DURATION_SECONDS - timeLeft;
+      const attemptsMade = MAX_ATTEMPTS - attemptsLeft + 1;
+      setTimeout(() => onSuccess({ timeElapsed, attemptsMade }), 1500);
     } else {
       const newAttempts = attemptsLeft - 1;
       setAttemptsLeft(newAttempts);
@@ -84,7 +86,7 @@ const GameScreen: React.FC<GameScreenProps> = ({
       }
       setGuess('');
     }
-  }, [guess, originalMessage, attemptsLeft, isGameActive, onSuccess, onFailure]);
+  }, [guess, originalMessage, attemptsLeft, timeLeft, isGameActive, onSuccess, onFailure]);
 
   const getTimeColor = () => {
     if (timeLeft > 120) return 'text-green-400';

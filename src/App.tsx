@@ -23,6 +23,7 @@ function App() {
   const [gameState, setGameState] = useState<GameState>('intro');
   const [originalMessage, setOriginalMessage] = useState('');
   const [encryptedMessage, setEncryptedMessage] = useState('');
+  const [gameStats, setGameStats] = useState<{ timeElapsed: number; attemptsMade: number }>({ timeElapsed: 0, attemptsMade: 0 });
 
   // Initialize or reset game
   const initializeGame = () => {
@@ -43,7 +44,8 @@ function App() {
     setGameState('playing');
   };
 
-  const handleSuccess = () => {
+  const handleSuccess = (stats: { timeElapsed: number; attemptsMade: number }) => {
+    setGameStats(stats);
     setGameState('success');
   };
 
@@ -69,7 +71,7 @@ function App() {
         />
       )}
       
-      {gameState === 'success' && <SuccessScreen onPlayAgain={handleRestart} />}
+      {gameState === 'success' && <SuccessScreen onPlayAgain={handleRestart} gameStats={gameStats} />}
       
       {gameState === 'failure' && (
         <FailureScreen 
