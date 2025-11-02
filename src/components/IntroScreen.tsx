@@ -6,7 +6,7 @@ interface IntroScreenProps {
 
 const IntroScreen: React.FC<IntroScreenProps> = ({ onStart }) => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-blue-400 via-cyan-500 to-sky-600 flex items-center justify-center p-4">
       <div className="max-w-3xl w-full bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl p-8 md:p-12">
         <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 text-center">
           🏛️ Caesar Quest
@@ -62,7 +62,7 @@ const IntroScreen: React.FC<IntroScreenProps> = ({ onStart }) => {
 
         <button
           onClick={onStart}
-          className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold py-4 px-8 rounded-lg text-xl transition-all transform hover:scale-105 shadow-lg"
+          className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-bold py-4 px-8 rounded-lg text-xl transition-all transform hover:scale-105 shadow-lg"
           aria-label="Start the Caesar cipher challenge"
         >
           Start the Challenge 🚀

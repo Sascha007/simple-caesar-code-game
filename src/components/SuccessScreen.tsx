@@ -43,7 +43,7 @@ const SuccessScreen: React.FC<SuccessScreenProps> = ({ onPlayAgain }) => {
 
         <button
           onClick={onPlayAgain}
-          className="w-full bg-gradient-to-r from-green-500 to-blue-600 hover:from-green-600 hover:to-blue-700 text-white font-bold py-4 px-8 rounded-lg text-xl transition-all transform hover:scale-105 shadow-lg"
+          className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-bold py-4 px-8 rounded-lg text-xl transition-all transform hover:scale-105 shadow-lg"
           aria-label="Play again"
         >
           Play Again 🔄
