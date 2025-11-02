@@ -8,6 +8,9 @@ interface GameScreenProps {
   onFailure: () => void;
 }
 
+const MAX_ATTEMPTS = 5;
+const GAME_DURATION_SECONDS = 240; // 4 minutes
+
 const GameScreen: React.FC<GameScreenProps> = ({
   encryptedMessage,
   originalMessage,
@@ -16,8 +19,8 @@ const GameScreen: React.FC<GameScreenProps> = ({
 }) => {
   const [shift, setShift] = useState(0);
   const [guess, setGuess] = useState('');
-  const [attemptsLeft, setAttemptsLeft] = useState(5);
-  const [timeLeft, setTimeLeft] = useState(240); // 4 minutes in seconds
+  const [attemptsLeft, setAttemptsLeft] = useState(MAX_ATTEMPTS);
+  const [timeLeft, setTimeLeft] = useState(GAME_DURATION_SECONDS);
   const [feedback, setFeedback] = useState('');
   const [isGameActive, setIsGameActive] = useState(true);
 
@@ -104,7 +107,7 @@ const GameScreen: React.FC<GameScreenProps> = ({
           <div className="bg-white/5 rounded-lg p-4 border border-white/20">
             <p className="text-white/70 text-sm mb-1">Attempts Left</p>
             <p className={`text-2xl font-bold ${getAttemptsColor()}`}>
-              🎯 {attemptsLeft}/5
+              🎯 {attemptsLeft}/{MAX_ATTEMPTS}
             </p>
           </div>
         </div>

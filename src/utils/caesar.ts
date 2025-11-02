@@ -24,6 +24,9 @@ export function caesarEncrypt(text: string, shift: number): string {
  * @param text - The encrypted text
  * @param shift - The shift value (0-25)
  * @returns The decrypted text
+ * 
+ * Note: Decryption with shift N is equivalent to encryption with shift (26-N)
+ * because shifting backward N positions is the same as shifting forward (26-N) positions
  */
 export function caesarDecrypt(text: string, shift: number): string {
   return caesarEncrypt(text, 26 - (shift % 26));
