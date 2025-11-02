@@ -12,7 +12,7 @@ const SuccessScreen: React.FC<SuccessScreenProps> = ({ onPlayAgain, gameStats })
     return `${mins}:${secs.toString().padStart(2, '0')}`;
   };
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-900 via-emerald-900 to-teal-900 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-cyan-600 via-blue-700 to-indigo-800 flex items-center justify-center p-4">
       <div className="max-w-2xl w-full bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl p-8 md:p-12 text-center">
         <div className="mb-6">
           <div className="text-8xl mb-4 animate-bounce">🎉</div>
@@ -54,15 +54,15 @@ const SuccessScreen: React.FC<SuccessScreenProps> = ({ onPlayAgain, gameStats })
             <div className="text-4xl mb-2">⚡</div>
             <p className="text-blue-200 font-semibold">Quick Thinker</p>
           </div>
-          <div className="bg-purple-500/20 rounded-lg p-4 border border-purple-400/50">
+          <div className="bg-cyan-500/20 rounded-lg p-4 border border-cyan-400/50">
             <div className="text-4xl mb-2">🎯</div>
-            <p className="text-purple-200 font-semibold">Sharp Mind</p>
+            <p className="text-cyan-200 font-semibold">Sharp Mind</p>
           </div>
         </div>
 
         <button
           onClick={onPlayAgain}
-          className="w-full bg-gradient-to-r from-green-500 to-blue-600 hover:from-green-600 hover:to-blue-700 text-white font-bold py-4 px-8 rounded-lg text-xl transition-all transform hover:scale-105 shadow-lg"
+          className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-bold py-4 px-8 rounded-lg text-xl transition-all transform hover:scale-105 shadow-lg"
           aria-label="Play again"
         >
           Play Again 🔄
