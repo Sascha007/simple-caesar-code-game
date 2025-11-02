@@ -53,8 +53,9 @@ const IntroScreen: React.FC<IntroScreenProps> = ({ onStart }) => {
             <ul className="list-disc list-inside space-y-1 ml-4 mt-2">
               <li>You have <span className="font-bold">5 attempts</span> to guess correctly</li>
               <li>You have <span className="font-bold">4 minutes</span> to solve the riddle</li>
-              <li>Use the slider to adjust the shift and see how the text changes</li>
-              <li>Enter your guess for the original plaintext</li>
+              <li>Use the slider to see the alphabet mapping for each shift</li>
+              <li>Manually decrypt the message using the mapping table</li>
+              <li>The answer will <span className="font-bold">NOT</span> be revealed if you fail!</li>
             </ul>
           </div>
         </div>

@@ -1,11 +1,10 @@
 import React from 'react';
 
 interface FailureScreenProps {
-  originalMessage: string;
   onTryAgain: () => void;
 }
 
-const FailureScreen: React.FC<FailureScreenProps> = ({ originalMessage, onTryAgain }) => {
+const FailureScreen: React.FC<FailureScreenProps> = ({ onTryAgain }) => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-red-900 via-orange-900 to-amber-900 flex items-center justify-center p-4">
       <div className="max-w-2xl w-full bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl p-8 md:p-12 text-center">
@@ -24,20 +23,24 @@ const FailureScreen: React.FC<FailureScreenProps> = ({ originalMessage, onTryAga
             Don't worry! Even the greatest cryptographers needed practice. 
             Every attempt makes you sharper! 💪
           </p>
-          <div className="bg-blue-500/20 rounded-lg p-4 border border-blue-400/50">
-            <p className="text-blue-200 font-semibold mb-2">The original message was:</p>
-            <p className="text-xl font-mono text-white break-words">
-              {originalMessage}
+          <div className="bg-red-500/20 rounded-lg p-4 border border-red-400/50">
+            <p className="text-red-200 font-semibold text-xl">
+              The secret remains hidden! 🔐
+            </p>
+            <p className="text-white/80 mt-2">
+              A true cryptographer never reveals the answer too easily.
             </p>
           </div>
         </div>
 
         <div className="bg-yellow-500/20 rounded-lg p-4 border border-yellow-400/50 mb-8">
-          <p className="text-yellow-200 font-semibold">💡 Pro Tip:</p>
-          <p className="text-white mt-2">
-            Try adjusting the slider while watching the preview. 
-            Look for words that start to make sense!
-          </p>
+          <p className="text-yellow-200 font-semibold">💡 Pro Tips:</p>
+          <ul className="text-white mt-2 text-left space-y-2">
+            <li>• Use the alphabet mapping table to manually decrypt each letter</li>
+            <li>• Look for common short words like "THE", "AND", "IS"</li>
+            <li>• Try different shift values systematically</li>
+            <li>• Write down your decryption attempts on paper</li>
+          </ul>
         </div>
 
         <button

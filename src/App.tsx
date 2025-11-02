@@ -51,12 +51,7 @@ function App() {
     setGameState('failure');
   };
 
-  const handlePlayAgain = () => {
-    initializeGame();
-    setGameState('playing');
-  };
-
-  const handleTryAgain = () => {
+  const handleRestart = () => {
     initializeGame();
     setGameState('playing');
   };
@@ -74,12 +69,11 @@ function App() {
         />
       )}
       
-      {gameState === 'success' && <SuccessScreen onPlayAgain={handlePlayAgain} />}
+      {gameState === 'success' && <SuccessScreen onPlayAgain={handleRestart} />}
       
       {gameState === 'failure' && (
         <FailureScreen 
-          originalMessage={originalMessage}
-          onTryAgain={handleTryAgain} 
+          onTryAgain={handleRestart} 
         />
       )}
     </div>

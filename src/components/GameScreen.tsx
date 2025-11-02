@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { caesarDecrypt, normalizeText } from '../utils/caesar';
+import { normalizeText } from '../utils/caesar';
 
 interface GameScreenProps {
   encryptedMessage: string;
@@ -42,7 +42,16 @@ const GameScreen: React.FC<GameScreenProps> = ({
     return () => clearInterval(timer);
   }, [isGameActive, timeLeft, onFailure]);
 
-  const decryptedText = caesarDecrypt(encryptedMessage, shift);
+  // Generate alphabet mapping for the current shift
+  const generateAlphabetMapping = (shiftValue: number) => {
+    const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const shifted = alphabet.split('').map((_, i) => {
+      return alphabet[(i + shiftValue) % 26];
+    }).join('');
+    return { original: alphabet, shifted };
+  };
+
+  const alphabetMapping = generateAlphabetMapping(shift);
 
   const formatTime = (seconds: number): string => {
     const mins = Math.floor(seconds / 60);
@@ -143,11 +152,30 @@ const GameScreen: React.FC<GameScreenProps> = ({
           </div>
         </div>
 
-        {/* Decrypted Preview */}
+        {/* Alphabet Mapping Table */}
         <div className="bg-blue-500/20 rounded-lg p-6 border border-blue-400/50 mb-6">
-          <h2 className="text-xl font-semibold text-blue-200 mb-3">Preview (with shift {shift}):</h2>
-          <p className="text-xl font-mono text-white break-words">
-            {decryptedText}
+          <h2 className="text-xl font-semibold text-blue-200 mb-3">
+            Alphabet Mapping (Shift {shift}):
+          </h2>
+          <div className="space-y-2">
+            <div className="flex flex-wrap gap-1 justify-center">
+              {alphabetMapping.original.split('').map((char, i) => (
+                <div key={`orig-${i}`} className="flex flex-col items-center">
+                  <span className="text-xs text-white/70 font-mono w-6 text-center">{char}</span>
+                </div>
+              ))}
+            </div>
+            <div className="text-center text-yellow-400 text-xl">↓</div>
+            <div className="flex flex-wrap gap-1 justify-center">
+              {alphabetMapping.shifted.split('').map((char, i) => (
+                <div key={`shift-${i}`} className="flex flex-col items-center">
+                  <span className="text-sm text-yellow-400 font-mono font-bold w-6 text-center">{char}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <p className="text-white/60 text-sm mt-4 text-center">
+            Use this mapping to manually decrypt the message above
           </p>
         </div>
 
