@@ -1,0 +1,79 @@
+{
+  "app": {
+    "title": "Caesar Quest",
+    "pageTitle": "Caesar Quest - Knacke den Code",
+    "pageDescription": "Caesar Quest - Eine moderne Web-App, in der Benutzer unter Druck eine Caesar-verschlüsselte Nachricht entschlüsseln. Lerne das Prinzip durch eine kurze, spielerische Geschichte und dann race gegen die Zeit, um den geheimen Text zu enthüllen."
+  },
+  "intro": {
+    "title": "🏛️ Caesar Quest",
+    "legendTitle": "Die Legende von Caesars Geheimnis",
+    "legendText": "Im alten Rom brauchte Julius Caesar eine Möglichkeit, geheime Nachrichten an seine Generäle zu senden. Er erfand eine einfache, aber clevere Methode: Jeder Buchstabe im Alphabet wird um eine feste Anzahl von Positionen verschoben.",
+    "howItWorksTitle": "So funktioniert es:",
+    "howItWorksIntro": "Mit einer Verschiebung von",
+    "howItWorksExample1": "wird zu",
+    "exampleTitle": "Ein weiteres Beispiel:",
+    "challengeText": "Jetzt bist du dran! Wir haben eine geheime Nachricht mit Caesars Chiffre verschlüsselt. Kannst du den Code knacken und den ursprünglichen Text enthüllen?",
+    "rulesTitle": "⚠️ Herausforderungsregeln:",
+    "rule1": "Du hast <bold>5 Versuche</bold>, um richtig zu raten",
+    "rule2": "Du hast <bold>4 Minuten</bold> Zeit, um das Rätsel zu lösen",
+    "rule3": "Verwende den Schieberegler, um die Alphabet-Zuordnung für jede Verschiebung zu sehen",
+    "rule4": "Entschlüssle die Nachricht manuell mit der Zuordnungstabelle",
+    "rule5": "Die Antwort wird <bold>NICHT</bold> enthüllt, wenn du scheiterst!",
+    "startButton": "Starte die Herausforderung 🚀",
+    "startButtonAria": "Starte die Caesar-Chiffre-Herausforderung"
+  },
+  "game": {
+    "title": "🔐 Knacke den Code",
+    "timeRemaining": "Verbleibende Zeit",
+    "attemptsLeft": "Verbleibende Versuche",
+    "encryptedMessage": "Verschlüsselte Nachricht:",
+    "caesarShift": "🎚️ Caesar-Verschiebung:",
+    "shiftAriaLabel": "Verschiebungswert: {{shift}}",
+    "alphabetMapping": "Alphabet-Zuordnung (Verschiebung {{shift}}):",
+    "mappingHelp": "Verwende diese Zuordnung, um die obige Nachricht manuell zu entschlüsseln",
+    "guessLabel": "Gib deine Vermutung für die ursprüngliche Nachricht ein:",
+    "guessPlaceholder": "Gib den ursprünglichen Klartext hier ein...",
+    "guessAriaLabel": "Gib deine Vermutung für die ursprüngliche Nachricht ein",
+    "submitButton": "Vermutung absenden 🎯",
+    "submitButtonAria": "Sende deine Vermutung ab",
+    "correctFeedback": "🎉 Richtig! Du hast den Code geknackt!",
+    "incorrectFeedback": "❌ Falsch! {{attempts}} Versuch{{plural}} verbleibend.",
+    "noAttemptsLeft": "❌ Keine Versuche mehr übrig!"
+  },
+  "success": {
+    "emoji": "🎉",
+    "title": "Glückwunsch!",
+    "subtitle": "Du hast Caesars Code geknackt! 🏆",
+    "message": "Du hast die geheime Nachricht erfolgreich entschlüsselt und bewiesen, dass du würdig bist, den Reihen der antiken Kryptographen beizutreten! Caesar selbst wäre von deinen Code-Knack-Fähigkeiten beeindruckt. 🏛️✨",
+    "achievement1": "Meister-Entschlüssler",
+    "achievement2": "Schnelldenker",
+    "achievement3": "Scharfer Verstand",
+    "playAgainButton": "Nochmal spielen 🔄",
+    "playAgainButtonAria": "Nochmal spielen"
+  },
+  "failure": {
+    "emoji": "😔",
+    "title": "Zeit abgelaufen!",
+    "subtitle": "Der Code bleibt ungeknackt... vorerst! 🔒",
+    "message": "Keine Sorge! Sogar die größten Kryptographen brauchten Übung. Jeder Versuch macht dich schärfer! 💪",
+    "secretHidden": "Das Geheimnis bleibt verborgen! 🔐",
+    "secretMessage": "Ein wahrer Kryptograph enthüllt die Antwort nicht zu leicht.",
+    "tipsTitle": "💡 Profi-Tipps:",
+    "tip1": "• Verwende die Alphabet-Zuordnungstabelle, um jeden Buchstaben manuell zu entschlüsseln",
+    "tip2": "• Suche nach häufigen kurzen Wörtern wie \"DER\", \"DIE\", \"UND\"",
+    "tip3": "• Probiere verschiedene Verschiebungswerte systematisch aus",
+    "tip4": "• Schreibe deine Entschlüsselungsversuche auf Papier auf",
+    "tryAgainButton": "Erneut versuchen 🔄",
+    "tryAgainButtonAria": "Erneut versuchen"
+  },
+  "messages": {
+    "message1": "Der Adler ist gelandet",
+    "message2": "Alle Wege führen nach Rom",
+    "message3": "Das Glück begünstigt die Mutigen",
+    "message4": "Ich kam, ich sah, ich siegte",
+    "message5": "Nutze den Tag genieße den Augenblick",
+    "message6": "Wissen ist Macht",
+    "message7": "Der Würfel ist gefallen",
+    "message8": "Hüte dich vor den Iden des März"
+  }
+}
