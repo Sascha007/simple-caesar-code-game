@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 interface SuccessScreenProps {
   onPlayAgain: () => void;
-  gameStats: { timeElapsed: number; attemptsMade: number };
+  gameStats: { timeElapsed: number; attemptsMade: number; hintsUsed: number };
 }
 
 const SuccessScreen: React.FC<SuccessScreenProps> = ({ onPlayAgain, gameStats }) => {
@@ -34,7 +34,7 @@ const SuccessScreen: React.FC<SuccessScreenProps> = ({ onPlayAgain, gameStats })
           </p>
         </div>
 
-        <div className="grid grid-cols-2 gap-4 mb-8">
+        <div className="grid grid-cols-3 gap-4 mb-8">
           <div className="bg-blue-500/20 rounded-lg p-6 border border-blue-400/50">
             <div className="text-4xl mb-2">⏱️</div>
             <p className="text-blue-200 text-sm mb-1">{t('success.timeTaken')}</p>
@@ -44,6 +44,11 @@ const SuccessScreen: React.FC<SuccessScreenProps> = ({ onPlayAgain, gameStats })
             <div className="text-4xl mb-2">🎯</div>
             <p className="text-green-200 text-sm mb-1">{t('success.attemptsUsed')}</p>
             <p className="text-2xl font-bold text-white">{gameStats.attemptsMade}</p>
+          </div>
+          <div className="bg-purple-500/20 rounded-lg p-6 border border-purple-400/50">
+            <div className="text-4xl mb-2">💡</div>
+            <p className="text-purple-200 text-sm mb-1">Hints Used</p>
+            <p className="text-2xl font-bold text-white">{gameStats.hintsUsed}</p>
           </div>
         </div>
 
