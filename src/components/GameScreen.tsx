@@ -4,7 +4,7 @@ import { normalizeText } from '../utils/caesar';
 interface GameScreenProps {
   encryptedMessage: string;
   originalMessage: string;
-  onSuccess: (stats: { timeElapsed: number; attemptsMade: number }) => void;
+  onSuccess: (stats: { timeElapsed: number; attemptsMade: number; hintsUsed: number }) => void;
   onFailure: () => void;
 }
 
@@ -23,6 +23,8 @@ const GameScreen: React.FC<GameScreenProps> = ({
   const [timeLeft, setTimeLeft] = useState(GAME_DURATION_SECONDS);
   const [feedback, setFeedback] = useState('');
   const [isGameActive, setIsGameActive] = useState(true);
+  const [hintsUsed, setHintsUsed] = useState(0);
+  const [currentHint, setCurrentHint] = useState('');
 
   // Timer countdown
   useEffect(() => {
@@ -53,6 +55,31 @@ const GameScreen: React.FC<GameScreenProps> = ({
 
   const alphabetMapping = generateAlphabetMapping(shift);
 
+  // Generate a hint that reveals partial information
+  const generateHint = () => {
+    const hints = [
+      `The message has ${originalMessage.length} characters (including spaces).`,
+      `The message starts with: "${originalMessage.substring(0, Math.min(3, originalMessage.length))}..."`,
+      `The message contains the word: "${originalMessage.split(' ')[0]}"`,
+      `The last word is: "${originalMessage.split(' ').pop()}"`,
+      `Here's a middle portion: "...${originalMessage.split(' ').slice(1, -1).join(' ')}..."`,
+    ];
+    
+    // Return next hint based on how many have been used
+    if (hintsUsed < hints.length) {
+      return hints[hintsUsed];
+    }
+    return 'No more hints available!';
+  };
+
+  const handleGetHint = () => {
+    if (!isGameActive) return;
+    
+    const hint = generateHint();
+    setCurrentHint(hint);
+    setHintsUsed(prev => prev + 1);
+  };
+
   const formatTime = (seconds: number): string => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
@@ -72,7 +99,7 @@ const GameScreen: React.FC<GameScreenProps> = ({
       setIsGameActive(false);
       const timeElapsed = GAME_DURATION_SECONDS - timeLeft;
       const attemptsMade = MAX_ATTEMPTS - attemptsLeft + 1;
-      setTimeout(() => onSuccess({ timeElapsed, attemptsMade }), 1500);
+      setTimeout(() => onSuccess({ timeElapsed, attemptsMade, hintsUsed }), 1500);
     } else {
       const newAttempts = attemptsLeft - 1;
       setAttemptsLeft(newAttempts);
@@ -86,7 +113,7 @@ const GameScreen: React.FC<GameScreenProps> = ({
       }
       setGuess('');
     }
-  }, [guess, originalMessage, attemptsLeft, timeLeft, isGameActive, onSuccess, onFailure]);
+  }, [guess, originalMessage, attemptsLeft, timeLeft, isGameActive, hintsUsed, onSuccess, onFailure]);
 
   const getTimeColor = () => {
     if (timeLeft > 120) return 'text-green-400';
@@ -108,7 +135,7 @@ const GameScreen: React.FC<GameScreenProps> = ({
         </h1>
 
         {/* Status Bar */}
-        <div className="grid grid-cols-2 gap-4 mb-6">
+        <div className="grid grid-cols-3 gap-4 mb-6">
           <div className="bg-white/5 rounded-lg p-4 border border-white/20">
             <p className="text-white/70 text-sm mb-1">Time Remaining</p>
             <p className={`text-2xl font-bold ${getTimeColor()}`}>
@@ -119,6 +146,12 @@ const GameScreen: React.FC<GameScreenProps> = ({
             <p className="text-white/70 text-sm mb-1">Attempts Left</p>
             <p className={`text-2xl font-bold ${getAttemptsColor()}`}>
               🎯 {attemptsLeft}/{MAX_ATTEMPTS}
+            </p>
+          </div>
+          <div className="bg-white/5 rounded-lg p-4 border border-white/20">
+            <p className="text-white/70 text-sm mb-1">Hints Used</p>
+            <p className="text-2xl font-bold text-purple-400">
+              💡 {hintsUsed}
             </p>
           </div>
         </div>
@@ -196,15 +229,34 @@ const GameScreen: React.FC<GameScreenProps> = ({
             className="w-full bg-white/10 border border-white/30 rounded-lg px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-400 disabled:opacity-50 disabled:cursor-not-allowed mb-4"
             aria-label="Enter your guess for the original message"
           />
-          <button
-            type="submit"
-            disabled={!isGameActive || !guess.trim()}
-            className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 disabled:from-gray-500 disabled:to-gray-600 text-white font-bold py-3 px-6 rounded-lg text-lg transition-all transform hover:scale-105 disabled:scale-100 disabled:cursor-not-allowed shadow-lg"
-            aria-label="Submit your guess"
-          >
-            Submit Guess 🎯
-          </button>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <button
+              type="submit"
+              disabled={!isGameActive || !guess.trim()}
+              className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 disabled:from-gray-500 disabled:to-gray-600 text-white font-bold py-3 px-6 rounded-lg text-lg transition-all transform hover:scale-105 disabled:scale-100 disabled:cursor-not-allowed shadow-lg"
+              aria-label="Submit your guess"
+            >
+              Submit Guess 🎯
+            </button>
+            <button
+              type="button"
+              onClick={handleGetHint}
+              disabled={!isGameActive}
+              className="bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 disabled:from-gray-500 disabled:to-gray-600 text-white font-bold py-3 px-6 rounded-lg text-lg transition-all transform hover:scale-105 disabled:scale-100 disabled:cursor-not-allowed shadow-lg"
+              aria-label="Get a hint"
+            >
+              Get Hint 💡
+            </button>
+          </div>
         </form>
+
+        {/* Hint Display */}
+        {currentHint && (
+          <div className="bg-purple-500/20 rounded-lg p-4 border border-purple-400/50 mb-6">
+            <h3 className="text-lg font-semibold text-purple-200 mb-2">💡 Hint:</h3>
+            <p className="text-white text-base">{currentHint}</p>
+          </div>
+        )}
 
         {/* Feedback */}
         {feedback && (
