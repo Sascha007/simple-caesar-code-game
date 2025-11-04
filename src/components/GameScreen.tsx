@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import { normalizeText } from '../utils/caesar';
 
 interface GameScreenProps {
@@ -17,6 +18,7 @@ const GameScreen: React.FC<GameScreenProps> = ({
   onSuccess,
   onFailure,
 }) => {
+  const { t } = useTranslation();
   const [shift, setShift] = useState(0);
   const [guess, setGuess] = useState('');
   const [attemptsLeft, setAttemptsLeft] = useState(MAX_ATTEMPTS);
@@ -96,7 +98,7 @@ const GameScreen: React.FC<GameScreenProps> = ({
     const normalizedOriginal = normalizeText(originalMessage);
 
     if (normalizedGuess === normalizedOriginal) {
-      setFeedback('🎉 Correct! You cracked the code!');
+      setFeedback(t('game.correctFeedback'));
       setIsGameActive(false);
       const timeElapsed = GAME_DURATION_SECONDS - timeLeft;
       const attemptsMade = MAX_ATTEMPTS - attemptsLeft + 1;
@@ -106,11 +108,14 @@ const GameScreen: React.FC<GameScreenProps> = ({
       setAttemptsLeft(newAttempts);
       
       if (newAttempts <= 0) {
-        setFeedback('❌ No attempts left!');
+        setFeedback(t('game.noAttemptsLeft'));
         setIsGameActive(false);
         setTimeout(() => onFailure(), 1500);
       } else {
-        setFeedback(`❌ Incorrect! ${newAttempts} attempt${newAttempts !== 1 ? 's' : ''} remaining.`);
+        setFeedback(t('game.incorrectFeedback', { 
+          attempts: newAttempts, 
+          plural: newAttempts !== 1 ? 'e' : '' 
+        }));
       }
       setGuess('');
     }
@@ -132,19 +137,19 @@ const GameScreen: React.FC<GameScreenProps> = ({
     <div className="min-h-screen bg-gradient-to-br from-sky-500 via-blue-600 to-indigo-700 flex items-center justify-center p-4">
       <div className="max-w-4xl w-full bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl p-6 md:p-10">
         <h1 className="text-3xl md:text-4xl font-bold text-white mb-6 text-center">
-          🔐 Crack the Code
+          {t('game.title')}
         </h1>
 
         {/* Status Bar */}
         <div className="grid grid-cols-3 gap-4 mb-6">
           <div className="bg-white/5 rounded-lg p-4 border border-white/20">
-            <p className="text-white/70 text-sm mb-1">Time Remaining</p>
+            <p className="text-white/70 text-sm mb-1">{t('game.timeRemaining')}</p>
             <p className={`text-2xl font-bold ${getTimeColor()}`}>
               ⏰ {formatTime(timeLeft)}
             </p>
           </div>
           <div className="bg-white/5 rounded-lg p-4 border border-white/20">
-            <p className="text-white/70 text-sm mb-1">Attempts Left</p>
+            <p className="text-white/70 text-sm mb-1">{t('game.attemptsLeft')}</p>
             <p className={`text-2xl font-bold ${getAttemptsColor()}`}>
               🎯 {attemptsLeft}/{MAX_ATTEMPTS}
             </p>
@@ -159,7 +164,7 @@ const GameScreen: React.FC<GameScreenProps> = ({
 
         {/* Encrypted Message */}
         <div className="bg-red-500/20 rounded-lg p-6 border border-red-400/50 mb-6">
-          <h2 className="text-xl font-semibold text-red-200 mb-3">Encrypted Message:</h2>
+          <h2 className="text-xl font-semibold text-red-200 mb-3">{t('game.encryptedMessage')}</h2>
           <p className="text-2xl font-mono text-white break-words">
             {encryptedMessage}
           </p>
@@ -168,7 +173,7 @@ const GameScreen: React.FC<GameScreenProps> = ({
         {/* Shift Slider */}
         <div className="bg-white/5 rounded-lg p-6 border border-white/20 mb-6">
           <label htmlFor="shift-slider" className="block text-white text-lg font-semibold mb-3">
-            🎚️ Caesar Shift: <span className="text-yellow-400">{shift}</span>
+            {t('game.caesarShift')} <span className="text-yellow-400">{shift}</span>
           </label>
           <input
             id="shift-slider"
@@ -179,7 +184,7 @@ const GameScreen: React.FC<GameScreenProps> = ({
             onChange={(e) => setShift(Number(e.target.value))}
             disabled={!isGameActive}
             className="w-full h-3 bg-white/20 rounded-lg appearance-none cursor-pointer slider"
-            aria-label={`Shift value: ${shift}`}
+            aria-label={t('game.shiftAriaLabel', { shift })}
           />
           <div className="flex justify-between text-white/60 text-sm mt-2">
             <span>0</span>
@@ -191,7 +196,7 @@ const GameScreen: React.FC<GameScreenProps> = ({
         {/* Alphabet Mapping Table */}
         <div className="bg-blue-500/20 rounded-lg p-6 border border-blue-400/50 mb-6">
           <h2 className="text-xl font-semibold text-blue-200 mb-3">
-            Alphabet Mapping (Shift {shift}):
+            {t('game.alphabetMapping', { shift })}
           </h2>
           <div className="space-y-2">
             <div className="flex flex-wrap gap-1 justify-center">
@@ -211,14 +216,14 @@ const GameScreen: React.FC<GameScreenProps> = ({
             </div>
           </div>
           <p className="text-white/60 text-sm mt-4 text-center">
-            Use this mapping to manually decrypt the message above
+            {t('game.mappingHelp')}
           </p>
         </div>
 
         {/* Guess Input */}
         <form onSubmit={handleSubmit} className="mb-6">
           <label htmlFor="guess-input" className="block text-white text-lg font-semibold mb-3">
-            Enter your guess for the original message:
+            {t('game.guessLabel')}
           </label>
           <input
             id="guess-input"
@@ -226,9 +231,9 @@ const GameScreen: React.FC<GameScreenProps> = ({
             value={guess}
             onChange={(e) => setGuess(e.target.value)}
             disabled={!isGameActive}
-            placeholder="Type the original plaintext here..."
+            placeholder={t('game.guessPlaceholder')}
             className="w-full bg-white/10 border border-white/30 rounded-lg px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-400 disabled:opacity-50 disabled:cursor-not-allowed mb-4"
-            aria-label="Enter your guess for the original message"
+            aria-label={t('game.guessAriaLabel')}
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <button
@@ -262,7 +267,7 @@ const GameScreen: React.FC<GameScreenProps> = ({
         {/* Feedback */}
         {feedback && (
           <div className={`rounded-lg p-4 text-center text-lg font-semibold ${
-            feedback.includes('Correct') 
+            feedback.includes('🎉') 
               ? 'bg-green-500/20 border border-green-400/50 text-green-200'
               : 'bg-red-500/20 border border-red-400/50 text-red-200'
           }`} role="alert">
