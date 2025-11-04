@@ -1,25 +1,16 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import IntroScreen from './components/IntroScreen';
 import GameScreen from './components/GameScreen';
 import SuccessScreen from './components/SuccessScreen';
 import FailureScreen from './components/FailureScreen';
+import LanguageSwitcher from './components/LanguageSwitcher';
 import { caesarEncrypt } from './utils/caesar';
 
 type GameState = 'intro' | 'playing' | 'success' | 'failure';
 
-// Array of secret messages with varying difficulty
-const SECRET_MESSAGES = [
-  "The eagle has landed",
-  "All roads lead to Rome",
-  "Fortune favors the bold",
-  "Veni vidi vici",
-  "Carpe diem seize the day",
-  "Knowledge is power",
-  "The die is cast",
-  "Beware the ides of March"
-];
-
 function App() {
+  const { t } = useTranslation();
   const [gameState, setGameState] = useState<GameState>('intro');
   const [originalMessage, setOriginalMessage] = useState('');
   const [encryptedMessage, setEncryptedMessage] = useState('');
@@ -27,7 +18,18 @@ function App() {
 
   // Initialize or reset game
   const initializeGame = () => {
-    const randomMessage = SECRET_MESSAGES[Math.floor(Math.random() * SECRET_MESSAGES.length)];
+    const messageKeys = [
+      'messages.message1',
+      'messages.message2',
+      'messages.message3',
+      'messages.message4',
+      'messages.message5',
+      'messages.message6',
+      'messages.message7',
+      'messages.message8',
+    ];
+    const randomKey = messageKeys[Math.floor(Math.random() * messageKeys.length)];
+    const randomMessage = t(randomKey);
     const randomShift = Math.floor(Math.random() * 25) + 1; // 1-25, avoiding 0
     
     setOriginalMessage(randomMessage);
@@ -37,6 +39,7 @@ function App() {
   // Initialize game on mount
   useEffect(() => {
     initializeGame();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleStart = () => {
@@ -60,6 +63,7 @@ function App() {
 
   return (
     <div className="min-h-screen">
+      <LanguageSwitcher />
       {gameState === 'intro' && <IntroScreen onStart={handleStart} />}
       
       {gameState === 'playing' && (

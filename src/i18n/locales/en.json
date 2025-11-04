@@ -1,0 +1,81 @@
+{
+  "app": {
+    "title": "Caesar Quest",
+    "pageTitle": "Caesar Quest - Crack the Code",
+    "pageDescription": "Caesar Quest - A sleek web app where users crack a Caesar-encrypted message under pressure. Learn the principle through a short, playful story, then race the clock to reveal the secret text."
+  },
+  "intro": {
+    "title": "🏛️ Caesar Quest",
+    "legendTitle": "The Legend of Caesar's Secret",
+    "legendText": "In ancient Rome, Julius Caesar needed a way to send secret messages to his generals. He invented a simple yet clever method: shifting each letter in the alphabet by a fixed number of positions.",
+    "howItWorksTitle": "How it Works:",
+    "howItWorksIntro": "With a shift of",
+    "howItWorksExample1": "becomes",
+    "exampleTitle": "Another Example:",
+    "challengeText": "Now it's your turn! We've encrypted a secret message using Caesar's cipher. Can you crack the code and reveal the original text?",
+    "rulesTitle": "⚠️ Challenge Rules:",
+    "rule1": "You have <bold>5 attempts</bold> to guess correctly",
+    "rule2": "You have <bold>4 minutes</bold> to solve the riddle",
+    "rule3": "Use the slider to see the alphabet mapping for each shift",
+    "rule4": "Manually decrypt the message using the mapping table",
+    "rule5": "The answer will <bold>NOT</bold> be revealed if you fail!",
+    "startButton": "Start the Challenge 🚀",
+    "startButtonAria": "Start the Caesar cipher challenge"
+  },
+  "game": {
+    "title": "🔐 Crack the Code",
+    "timeRemaining": "Time Remaining",
+    "attemptsLeft": "Attempts Left",
+    "encryptedMessage": "Encrypted Message:",
+    "caesarShift": "🎚️ Caesar Shift:",
+    "shiftAriaLabel": "Shift value: {{shift}}",
+    "alphabetMapping": "Alphabet Mapping (Shift {{shift}}):",
+    "mappingHelp": "Use this mapping to manually decrypt the message above",
+    "guessLabel": "Enter your guess for the original message:",
+    "guessPlaceholder": "Type the original plaintext here...",
+    "guessAriaLabel": "Enter your guess for the original message",
+    "submitButton": "Submit Guess 🎯",
+    "submitButtonAria": "Submit your guess",
+    "correctFeedback": "🎉 Correct! You cracked the code!",
+    "incorrectFeedback": "❌ Incorrect! {{attempts}} attempt{{plural}} remaining.",
+    "noAttemptsLeft": "❌ No attempts left!"
+  },
+  "success": {
+    "emoji": "🎉",
+    "title": "Congratulations!",
+    "subtitle": "You've cracked Caesar's code! 🏆",
+    "message": "You've successfully decoded the secret message and proven yourself worthy of joining the ranks of ancient cryptographers! Caesar himself would be impressed by your code-breaking skills. 🏛️✨",
+    "timeTaken": "Time Taken",
+    "attemptsUsed": "Attempts Used",
+    "achievement1": "Master Decoder",
+    "achievement2": "Quick Thinker",
+    "achievement3": "Sharp Mind",
+    "playAgainButton": "Play Again 🔄",
+    "playAgainButtonAria": "Play again"
+  },
+  "failure": {
+    "emoji": "😔",
+    "title": "Time's Up!",
+    "subtitle": "The code remains uncracked... for now! 🔒",
+    "message": "Don't worry! Even the greatest cryptographers needed practice. Every attempt makes you sharper! 💪",
+    "secretHidden": "The secret remains hidden! 🔐",
+    "secretMessage": "A true cryptographer never reveals the answer too easily.",
+    "tipsTitle": "💡 Pro Tips:",
+    "tip1": "• Use the alphabet mapping table to manually decrypt each letter",
+    "tip2": "• Look for common short words like \"THE\", \"AND\", \"IS\"",
+    "tip3": "• Try different shift values systematically",
+    "tip4": "• Write down your decryption attempts on paper",
+    "tryAgainButton": "Try Again 🔄",
+    "tryAgainButtonAria": "Try again"
+  },
+  "messages": {
+    "message1": "The eagle has landed",
+    "message2": "All roads lead to Rome",
+    "message3": "Fortune favors the bold",
+    "message4": "Veni vidi vici",
+    "message5": "Carpe diem seize the day",
+    "message6": "Knowledge is power",
+    "message7": "The die is cast",
+    "message8": "Beware the ides of March"
+  }
+}
