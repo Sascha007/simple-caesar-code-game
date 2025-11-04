@@ -57,12 +57,13 @@ const GameScreen: React.FC<GameScreenProps> = ({
 
   // Generate a hint that reveals partial information
   const generateHint = () => {
+    const words = originalMessage.split(' ');
     const hints = [
       `The message has ${originalMessage.length} characters (including spaces).`,
       `The message starts with: "${originalMessage.substring(0, Math.min(3, originalMessage.length))}..."`,
-      `The message contains the word: "${originalMessage.split(' ')[0]}"`,
-      `The last word is: "${originalMessage.split(' ').pop()}"`,
-      `Here's a middle portion: "...${originalMessage.split(' ').slice(1, -1).join(' ')}..."`,
+      `The message contains the word: "${words[0]}"`,
+      `The last word is: "${words[words.length - 1]}"`,
+      words.length > 2 ? `Here's a middle portion: "...${words.slice(1, -1).join(' ')}..."` : `The message has ${words.length} word${words.length !== 1 ? 's' : ''}.`,
     ];
     
     // Return next hint based on how many have been used
