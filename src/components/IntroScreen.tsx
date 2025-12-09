@@ -52,11 +52,11 @@ const IntroScreen: React.FC<IntroScreenProps> = ({ onStart }) => {
           <div className="bg-red-500/20 rounded-lg p-4 border border-red-400/50">
             <p className="font-semibold text-red-200">{t('intro.rulesTitle')}</p>
             <ul className="list-disc list-inside space-y-1 ml-4 mt-2">
-              <li dangerouslySetInnerHTML={{ __html: t('intro.rule1').replace(/<bold>/g, '<span class="font-bold">').replace(/<\/bold>/g, '</span>') }} />
-              <li dangerouslySetInnerHTML={{ __html: t('intro.rule2').replace(/<bold>/g, '<span class="font-bold">').replace(/<\/bold>/g, '</span>') }} />
+              <li>{t('intro.rule1Text1')} <span className="font-bold">{t('intro.rule1Bold')}</span> {t('intro.rule1Text2')}</li>
+              <li>{t('intro.rule2Text1')} <span className="font-bold">{t('intro.rule2Bold')}</span> {t('intro.rule2Text2')}</li>
               <li>{t('intro.rule3')}</li>
               <li>{t('intro.rule4')}</li>
-              <li dangerouslySetInnerHTML={{ __html: t('intro.rule5').replace(/<bold>/g, '<span class="font-bold">').replace(/<\/bold>/g, '</span>') }} />
+              <li>{t('intro.rule5Text1')} <span className="font-bold">{t('intro.rule5Bold')}</span> {t('intro.rule5Text2')}</li>
             </ul>
           </div>
         </div>
