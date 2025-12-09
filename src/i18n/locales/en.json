@@ -36,6 +36,10 @@
     "guessAriaLabel": "Enter your guess for the original message",
     "submitButton": "Submit Guess 🎯",
     "submitButtonAria": "Submit your guess",
+    "getHintButton": "Get Hint 💡",
+    "getHintButtonAria": "Get a hint",
+    "hintsUsed": "Hints Used",
+    "hintLabel": "💡 Hint:",
     "correctFeedback": "🎉 Correct! You cracked the code!",
     "incorrectFeedback": "❌ Incorrect! {{attempts}} attempt{{plural}} remaining.",
     "noAttemptsLeft": "❌ No attempts left!"
@@ -47,6 +51,7 @@
     "message": "You've successfully decoded the secret message and proven yourself worthy of joining the ranks of ancient cryptographers! Caesar himself would be impressed by your code-breaking skills. 🏛️✨",
     "timeTaken": "Time Taken",
     "attemptsUsed": "Attempts Used",
+    "hintsUsed": "Hints Used",
     "achievement1": "Master Decoder",
     "achievement2": "Quick Thinker",
     "achievement3": "Sharp Mind",
