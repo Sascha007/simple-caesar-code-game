@@ -23,47 +23,47 @@ const SuccessScreen: React.FC<SuccessScreenProps> = ({ onPlayAgain, gameStats })
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
             {t('success.title')}
           </h1>
-          <p className="text-2xl text-green-200 mb-6">
+          <p className="text-2xl text-green-100 mb-6">
             {t('success.subtitle')}
           </p>
         </div>
 
-        <div className="bg-white/5 rounded-lg p-6 border border-white/20 mb-8">
-          <p className="text-xl text-white leading-relaxed">
+        <div className="bg-white/15 rounded-lg p-6 border border-white/30 mb-8">
+          <p className="text-xl text-white leading-relaxed font-medium">
             {t('success.message')}
           </p>
         </div>
 
         <div className="grid grid-cols-3 gap-4 mb-8">
-          <div className="bg-blue-500/20 rounded-lg p-6 border border-blue-400/50">
+          <div className="bg-blue-500/30 rounded-lg p-6 border border-blue-300/60">
             <div className="text-4xl mb-2">⏱️</div>
-            <p className="text-blue-200 text-sm mb-1">{t('success.timeTaken')}</p>
+            <p className="text-blue-100 text-sm mb-1 font-medium">{t('success.timeTaken')}</p>
             <p className="text-2xl font-bold text-white">{formatTime(gameStats.timeElapsed)}</p>
           </div>
-          <div className="bg-green-500/20 rounded-lg p-6 border border-green-400/50">
+          <div className="bg-green-500/30 rounded-lg p-6 border border-green-300/60">
             <div className="text-4xl mb-2">🎯</div>
-            <p className="text-green-200 text-sm mb-1">{t('success.attemptsUsed')}</p>
+            <p className="text-green-100 text-sm mb-1 font-medium">{t('success.attemptsUsed')}</p>
             <p className="text-2xl font-bold text-white">{gameStats.attemptsMade}</p>
           </div>
-          <div className="bg-purple-500/20 rounded-lg p-6 border border-purple-400/50">
+          <div className="bg-purple-500/30 rounded-lg p-6 border border-purple-300/60">
             <div className="text-4xl mb-2">💡</div>
-            <p className="text-purple-200 text-sm mb-1">{t('success.hintsUsed')}</p>
+            <p className="text-purple-100 text-sm mb-1 font-medium">{t('success.hintsUsed')}</p>
             <p className="text-2xl font-bold text-white">{gameStats.hintsUsed}</p>
           </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-          <div className="bg-yellow-500/20 rounded-lg p-4 border border-yellow-400/50">
+          <div className="bg-yellow-500/30 rounded-lg p-4 border border-yellow-300/60">
             <div className="text-4xl mb-2">🧠</div>
-            <p className="text-yellow-200 font-semibold">{t('success.achievement1')}</p>
+            <p className="text-yellow-100 font-semibold">{t('success.achievement1')}</p>
           </div>
-          <div className="bg-blue-500/20 rounded-lg p-4 border border-blue-400/50">
+          <div className="bg-blue-500/30 rounded-lg p-4 border border-blue-300/60">
             <div className="text-4xl mb-2">⚡</div>
-            <p className="text-blue-200 font-semibold">{t('success.achievement2')}</p>
+            <p className="text-blue-100 font-semibold">{t('success.achievement2')}</p>
           </div>
-          <div className="bg-cyan-500/20 rounded-lg p-4 border border-cyan-400/50">
+          <div className="bg-cyan-500/30 rounded-lg p-4 border border-cyan-300/60">
             <div className="text-4xl mb-2">🎯</div>
-            <p className="text-cyan-200 font-semibold">{t('success.achievement3')}</p>
+            <p className="text-cyan-100 font-semibold">{t('success.achievement3')}</p>
           </div>
         </div>
 

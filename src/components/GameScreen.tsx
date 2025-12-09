@@ -122,15 +122,15 @@ const GameScreen: React.FC<GameScreenProps> = ({
   }, [guess, originalMessage, attemptsLeft, timeLeft, isGameActive, hintsUsed, onSuccess, onFailure, t]);
 
   const getTimeColor = () => {
-    if (timeLeft > 120) return 'text-green-400';
-    if (timeLeft > 60) return 'text-yellow-400';
-    return 'text-red-400';
+    if (timeLeft > 120) return 'text-green-300';
+    if (timeLeft > 60) return 'text-yellow-200';
+    return 'text-red-300';
   };
 
   const getAttemptsColor = () => {
-    if (attemptsLeft > 3) return 'text-green-400';
-    if (attemptsLeft > 1) return 'text-yellow-400';
-    return 'text-red-400';
+    if (attemptsLeft > 3) return 'text-green-300';
+    if (attemptsLeft > 1) return 'text-yellow-200';
+    return 'text-red-300';
   };
 
   return (
@@ -142,38 +142,38 @@ const GameScreen: React.FC<GameScreenProps> = ({
 
         {/* Status Bar */}
         <div className="grid grid-cols-3 gap-4 mb-6">
-          <div className="bg-white/5 rounded-lg p-4 border border-white/20">
-            <p className="text-white/70 text-sm mb-1">{t('game.timeRemaining')}</p>
+          <div className="bg-white/15 rounded-lg p-4 border border-white/30">
+            <p className="text-white/90 text-sm mb-1 font-medium">{t('game.timeRemaining')}</p>
             <p className={`text-2xl font-bold ${getTimeColor()}`}>
               ⏰ {formatTime(timeLeft)}
             </p>
           </div>
-          <div className="bg-white/5 rounded-lg p-4 border border-white/20">
-            <p className="text-white/70 text-sm mb-1">{t('game.attemptsLeft')}</p>
+          <div className="bg-white/15 rounded-lg p-4 border border-white/30">
+            <p className="text-white/90 text-sm mb-1 font-medium">{t('game.attemptsLeft')}</p>
             <p className={`text-2xl font-bold ${getAttemptsColor()}`}>
               🎯 {attemptsLeft}/{MAX_ATTEMPTS}
             </p>
           </div>
-          <div className="bg-white/5 rounded-lg p-4 border border-white/20">
-            <p className="text-white/70 text-sm mb-1">{t('game.hintsUsed')}</p>
-            <p className="text-2xl font-bold text-purple-400">
+          <div className="bg-white/15 rounded-lg p-4 border border-white/30">
+            <p className="text-white/90 text-sm mb-1 font-medium">{t('game.hintsUsed')}</p>
+            <p className="text-2xl font-bold text-purple-300">
               💡 {hintsUsed}
             </p>
           </div>
         </div>
 
         {/* Encrypted Message */}
-        <div className="bg-red-500/20 rounded-lg p-6 border border-red-400/50 mb-6">
-          <h2 className="text-xl font-semibold text-red-200 mb-3">{t('game.encryptedMessage')}</h2>
-          <p className="text-2xl font-mono text-white break-words">
+        <div className="bg-red-500/30 rounded-lg p-6 border border-red-300/60 mb-6">
+          <h2 className="text-xl font-semibold text-red-100 mb-3">{t('game.encryptedMessage')}</h2>
+          <p className="text-2xl font-mono text-white break-words font-bold">
             {encryptedMessage}
           </p>
         </div>
 
         {/* Shift Slider */}
-        <div className="bg-white/5 rounded-lg p-6 border border-white/20 mb-6">
+        <div className="bg-white/15 rounded-lg p-6 border border-white/30 mb-6">
           <label htmlFor="shift-slider" className="block text-white text-lg font-semibold mb-3">
-            {t('game.caesarShift')} <span className="text-yellow-400">{shift}</span>
+            {t('game.caesarShift')} <span className="text-yellow-200 font-bold">{shift}</span>
           </label>
           <input
             id="shift-slider"
@@ -183,10 +183,10 @@ const GameScreen: React.FC<GameScreenProps> = ({
             value={shift}
             onChange={(e) => setShift(Number(e.target.value))}
             disabled={!isGameActive}
-            className="w-full h-3 bg-white/20 rounded-lg appearance-none cursor-pointer slider"
+            className="w-full h-3 bg-white/30 rounded-lg appearance-none cursor-pointer slider"
             aria-label={t('game.shiftAriaLabel', { shift })}
           />
-          <div className="flex justify-between text-white/60 text-sm mt-2">
+          <div className="flex justify-between text-white font-medium text-sm mt-2">
             <span>0</span>
             <span>13</span>
             <span>25</span>
@@ -194,28 +194,28 @@ const GameScreen: React.FC<GameScreenProps> = ({
         </div>
 
         {/* Alphabet Mapping Table */}
-        <div className="bg-blue-500/20 rounded-lg p-6 border border-blue-400/50 mb-6">
-          <h2 className="text-xl font-semibold text-blue-200 mb-3">
+        <div className="bg-blue-500/30 rounded-lg p-6 border border-blue-300/60 mb-6">
+          <h2 className="text-xl font-semibold text-blue-100 mb-3">
             {t('game.alphabetMapping', { shift })}
           </h2>
           <div className="space-y-2">
             <div className="flex flex-wrap gap-1 justify-center">
               {alphabetMapping.original.split('').map((char, i) => (
                 <div key={`orig-${i}`} className="flex flex-col items-center">
-                  <span className="text-xs text-white/70 font-mono w-6 text-center">{char}</span>
+                  <span className="text-xs text-white font-mono w-6 text-center font-medium">{char}</span>
                 </div>
               ))}
             </div>
-            <div className="text-center text-yellow-400 text-xl">↓</div>
+            <div className="text-center text-yellow-200 text-xl">↓</div>
             <div className="flex flex-wrap gap-1 justify-center">
               {alphabetMapping.shifted.split('').map((char, i) => (
                 <div key={`shift-${i}`} className="flex flex-col items-center">
-                  <span className="text-sm text-yellow-400 font-mono font-bold w-6 text-center">{char}</span>
+                  <span className="text-sm text-yellow-200 font-mono font-bold w-6 text-center">{char}</span>
                 </div>
               ))}
             </div>
           </div>
-          <p className="text-white/60 text-sm mt-4 text-center">
+          <p className="text-white/90 text-sm mt-4 text-center">
             {t('game.mappingHelp')}
           </p>
         </div>
@@ -232,7 +232,7 @@ const GameScreen: React.FC<GameScreenProps> = ({
             onChange={(e) => setGuess(e.target.value)}
             disabled={!isGameActive}
             placeholder={t('game.guessPlaceholder')}
-            className="w-full bg-white/10 border border-white/30 rounded-lg px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-400 disabled:opacity-50 disabled:cursor-not-allowed mb-4"
+            className="w-full bg-white/20 border-2 border-white/40 rounded-lg px-4 py-3 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-blue-300 disabled:opacity-50 disabled:cursor-not-allowed mb-4"
             aria-label={t('game.guessAriaLabel')}
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -258,9 +258,9 @@ const GameScreen: React.FC<GameScreenProps> = ({
 
         {/* Hint Display */}
         {currentHint && (
-          <div className="bg-purple-500/20 rounded-lg p-4 border border-purple-400/50 mb-6">
-            <h3 className="text-lg font-semibold text-purple-200 mb-2">{t('game.hintLabel')}</h3>
-            <p className="text-white text-base">{currentHint}</p>
+          <div className="bg-purple-500/30 rounded-lg p-4 border border-purple-300/60 mb-6">
+            <h3 className="text-lg font-semibold text-purple-100 mb-2">{t('game.hintLabel')}</h3>
+            <p className="text-white text-base font-medium">{currentHint}</p>
           </div>
         )}
 
@@ -268,8 +268,8 @@ const GameScreen: React.FC<GameScreenProps> = ({
         {feedback && (
           <div className={`rounded-lg p-4 text-center text-lg font-semibold ${
             feedback.includes('🎉') 
-              ? 'bg-green-500/20 border border-green-400/50 text-green-200'
-              : 'bg-red-500/20 border border-red-400/50 text-red-200'
+              ? 'bg-green-500/30 border-2 border-green-300/70 text-green-100'
+              : 'bg-red-500/30 border-2 border-red-300/70 text-red-100'
           }`} role="alert">
             {feedback}
           </div>
