@@ -5,6 +5,17 @@
  * @returns The encrypted text
  */
 export function caesarEncrypt(text: string, shift: number): string {
+  // Validate inputs
+  if (typeof text !== 'string') {
+    throw new TypeError('Text must be a string');
+  }
+  if (typeof shift !== 'number' || !isFinite(shift)) {
+    throw new TypeError('Shift must be a finite number');
+  }
+  
+  // Normalize shift to 0-25 range
+  const normalizedShift = ((shift % 26) + 26) % 26;
+  
   return text
     .split('')
     .map(char => {
@@ -12,7 +23,7 @@ export function caesarEncrypt(text: string, shift: number): string {
         const code = char.charCodeAt(0);
         const isUpperCase = code >= 65 && code <= 90;
         const base = isUpperCase ? 65 : 97;
-        return String.fromCharCode(((code - base + shift) % 26) + base);
+        return String.fromCharCode(((code - base + normalizedShift) % 26) + base);
       }
       return char;
     })
@@ -34,7 +45,16 @@ export function caesarDecrypt(text: string, shift: number): string {
 
 /**
  * Normalizes text for comparison (lowercase, no extra spaces)
+ * Removes potentially dangerous characters and ensures safe text handling
  */
 export function normalizeText(text: string): string {
-  return text.toLowerCase().trim().replace(/\s+/g, ' ');
+  if (typeof text !== 'string') {
+    return '';
+  }
+  // Remove any control characters and normalize whitespace
+  return text
+    .replace(/[\x00-\x1F\x7F-\x9F]/g, '') // eslint-disable-line no-control-regex -- Remove control characters for security
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, ' ');
 }
