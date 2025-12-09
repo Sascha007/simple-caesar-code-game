@@ -16,27 +16,27 @@ const FailureScreen: React.FC<FailureScreenProps> = ({ onTryAgain }) => {
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
             {t('failure.title')}
           </h1>
-          <p className="text-2xl text-red-200 mb-6">
+          <p className="text-2xl text-red-100 mb-6">
             {t('failure.subtitle')}
           </p>
         </div>
 
-        <div className="bg-white/5 rounded-lg p-6 border border-white/20 mb-6">
-          <p className="text-lg text-white leading-relaxed mb-4">
+        <div className="bg-white/15 rounded-lg p-6 border border-white/30 mb-6">
+          <p className="text-lg text-white leading-relaxed mb-4 font-medium">
             {t('failure.message')}
           </p>
-          <div className="bg-red-500/20 rounded-lg p-4 border border-red-400/50">
-            <p className="text-red-200 font-semibold text-xl">
+          <div className="bg-red-500/30 rounded-lg p-4 border border-red-300/60">
+            <p className="text-red-100 font-semibold text-xl">
               {t('failure.secretHidden')}
             </p>
-            <p className="text-white/80 mt-2">
+            <p className="text-white/90 mt-2">
               {t('failure.secretMessage')}
             </p>
           </div>
         </div>
 
-        <div className="bg-yellow-500/20 rounded-lg p-4 border border-yellow-400/50 mb-8">
-          <p className="text-yellow-200 font-semibold">{t('failure.tipsTitle')}</p>
+        <div className="bg-yellow-500/30 rounded-lg p-4 border border-yellow-300/60 mb-8">
+          <p className="text-yellow-100 font-semibold">{t('failure.tipsTitle')}</p>
           <ul className="text-white mt-2 text-left space-y-2">
             <li>{t('failure.tip1')}</li>
             <li>{t('failure.tip2')}</li>

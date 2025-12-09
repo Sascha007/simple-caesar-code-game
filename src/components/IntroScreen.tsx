@@ -16,32 +16,32 @@ const IntroScreen: React.FC<IntroScreenProps> = ({ onStart }) => {
         </h1>
         
         <div className="text-white space-y-4 mb-8">
-          <h2 className="text-2xl font-semibold text-blue-300">{t('intro.legendTitle')}</h2>
+          <h2 className="text-2xl font-semibold text-blue-100">{t('intro.legendTitle')}</h2>
           
           <p className="text-lg leading-relaxed">
             {t('intro.legendText')}
           </p>
           
-          <div className="bg-white/5 rounded-lg p-4 border border-white/20">
-            <h3 className="text-xl font-semibold text-yellow-300 mb-2">{t('intro.howItWorksTitle')}</h3>
+          <div className="bg-white/15 rounded-lg p-4 border border-white/30">
+            <h3 className="text-xl font-semibold text-yellow-200 mb-2">{t('intro.howItWorksTitle')}</h3>
             <p className="mb-2">
-              {t('intro.howItWorksIntro')} <span className="font-bold text-yellow-400">3</span>:
+              {t('intro.howItWorksIntro')} <span className="font-bold text-yellow-200">3</span>:
             </p>
             <ul className="list-disc list-inside space-y-1 ml-4">
-              <li><span className="font-mono">A</span> {t('intro.howItWorksExample1')} <span className="font-mono text-yellow-400">D</span></li>
-              <li><span className="font-mono">B</span> {t('intro.howItWorksExample1')} <span className="font-mono text-yellow-400">E</span></li>
-              <li><span className="font-mono">HELLO</span> {t('intro.howItWorksExample1')} <span className="font-mono text-yellow-400">KHOOR</span></li>
+              <li><span className="font-mono">A</span> {t('intro.howItWorksExample1')} <span className="font-mono text-yellow-100 font-bold">D</span></li>
+              <li><span className="font-mono">B</span> {t('intro.howItWorksExample1')} <span className="font-mono text-yellow-100 font-bold">E</span></li>
+              <li><span className="font-mono">HELLO</span> {t('intro.howItWorksExample1')} <span className="font-mono text-yellow-100 font-bold">KHOOR</span></li>
             </ul>
           </div>
           
-          <div className="bg-white/5 rounded-lg p-4 border border-white/20">
-            <h3 className="text-xl font-semibold text-green-300 mb-2">{t('intro.exampleTitle')}</h3>
+          <div className="bg-white/15 rounded-lg p-4 border border-white/30">
+            <h3 className="text-xl font-semibold text-green-200 mb-2">{t('intro.exampleTitle')}</h3>
             <p className="mb-2">
-              {t('intro.howItWorksIntro')} <span className="font-bold text-green-400">13</span>:
+              {t('intro.howItWorksIntro')} <span className="font-bold text-green-200">13</span>:
             </p>
             <ul className="list-disc list-inside space-y-1 ml-4">
-              <li><span className="font-mono">CAESAR</span> {t('intro.howItWorksExample1')} <span className="font-mono text-green-400">PNRFNE</span></li>
-              <li><span className="font-mono">SECRET</span> {t('intro.howItWorksExample1')} <span className="font-mono text-green-400">FRPERG</span></li>
+              <li><span className="font-mono">CAESAR</span> {t('intro.howItWorksExample1')} <span className="font-mono text-green-100 font-bold">PNRFNE</span></li>
+              <li><span className="font-mono">SECRET</span> {t('intro.howItWorksExample1')} <span className="font-mono text-green-100 font-bold">FRPERG</span></li>
             </ul>
           </div>
 
@@ -49,9 +49,9 @@ const IntroScreen: React.FC<IntroScreenProps> = ({ onStart }) => {
             {t('intro.challengeText')}
           </p>
           
-          <div className="bg-red-500/20 rounded-lg p-4 border border-red-400/50">
-            <p className="font-semibold text-red-200">{t('intro.rulesTitle')}</p>
-            <ul className="list-disc list-inside space-y-1 ml-4 mt-2">
+          <div className="bg-red-500/30 rounded-lg p-4 border border-red-300/60">
+            <p className="font-semibold text-red-100">{t('intro.rulesTitle')}</p>
+            <ul className="list-disc list-inside space-y-1 ml-4 mt-2 text-white">
               <li>{t('intro.rule1Text1')} <span className="font-bold">{t('intro.rule1Bold')}</span> {t('intro.rule1Text2')}</li>
               <li>{t('intro.rule2Text1')} <span className="font-bold">{t('intro.rule2Bold')}</span> {t('intro.rule2Text2')}</li>
               <li>{t('intro.rule3')}</li>
