@@ -36,6 +36,10 @@
     "guessAriaLabel": "Gib deine Vermutung für die ursprüngliche Nachricht ein",
     "submitButton": "Vermutung absenden 🎯",
     "submitButtonAria": "Sende deine Vermutung ab",
+    "getHintButton": "Hinweis erhalten 💡",
+    "getHintButtonAria": "Hinweis erhalten",
+    "hintsUsed": "Verwendete Hinweise",
+    "hintLabel": "💡 Hinweis:",
     "correctFeedback": "🎉 Richtig! Du hast den Code geknackt!",
     "incorrectFeedback": "❌ Falsch! {{attempts}} Versuch{{plural}} verbleibend.",
     "noAttemptsLeft": "❌ Keine Versuche mehr übrig!"
@@ -47,6 +51,7 @@
     "message": "Du hast die geheime Nachricht erfolgreich entschlüsselt und bewiesen, dass du würdig bist, den Reihen der antiken Kryptographen beizutreten! Caesar selbst wäre von deinen Code-Knack-Fähigkeiten beeindruckt. 🏛️✨",
     "timeTaken": "Benötigte Zeit",
     "attemptsUsed": "Verwendete Versuche",
+    "hintsUsed": "Verwendete Hinweise",
     "achievement1": "Meister-Entschlüssler",
     "achievement2": "Schnelldenker",
     "achievement3": "Scharfer Verstand",

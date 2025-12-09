@@ -119,7 +119,7 @@ const GameScreen: React.FC<GameScreenProps> = ({
       }
       setGuess('');
     }
-  }, [guess, originalMessage, attemptsLeft, timeLeft, isGameActive, hintsUsed, onSuccess, onFailure]);
+  }, [guess, originalMessage, attemptsLeft, timeLeft, isGameActive, hintsUsed, onSuccess, onFailure, t]);
 
   const getTimeColor = () => {
     if (timeLeft > 120) return 'text-green-400';
@@ -155,7 +155,7 @@ const GameScreen: React.FC<GameScreenProps> = ({
             </p>
           </div>
           <div className="bg-white/5 rounded-lg p-4 border border-white/20">
-            <p className="text-white/70 text-sm mb-1">Hints Used</p>
+            <p className="text-white/70 text-sm mb-1">{t('game.hintsUsed')}</p>
             <p className="text-2xl font-bold text-purple-400">
               💡 {hintsUsed}
             </p>
@@ -240,18 +240,18 @@ const GameScreen: React.FC<GameScreenProps> = ({
               type="submit"
               disabled={!isGameActive || !guess.trim()}
               className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 disabled:from-gray-500 disabled:to-gray-600 text-white font-bold py-3 px-6 rounded-lg text-lg transition-all transform hover:scale-105 disabled:scale-100 disabled:cursor-not-allowed shadow-lg"
-              aria-label="Submit your guess"
+              aria-label={t('game.submitButtonAria')}
             >
-              Submit Guess 🎯
+              {t('game.submitButton')}
             </button>
             <button
               type="button"
               onClick={handleGetHint}
               disabled={!isGameActive}
               className="bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 disabled:from-gray-500 disabled:to-gray-600 text-white font-bold py-3 px-6 rounded-lg text-lg transition-all transform hover:scale-105 disabled:scale-100 disabled:cursor-not-allowed shadow-lg"
-              aria-label="Get a hint"
+              aria-label={t('game.getHintButtonAria')}
             >
-              Get Hint 💡
+              {t('game.getHintButton')}
             </button>
           </div>
         </form>
@@ -259,7 +259,7 @@ const GameScreen: React.FC<GameScreenProps> = ({
         {/* Hint Display */}
         {currentHint && (
           <div className="bg-purple-500/20 rounded-lg p-4 border border-purple-400/50 mb-6">
-            <h3 className="text-lg font-semibold text-purple-200 mb-2">💡 Hint:</h3>
+            <h3 className="text-lg font-semibold text-purple-200 mb-2">{t('game.hintLabel')}</h3>
             <p className="text-white text-base">{currentHint}</p>
           </div>
         )}

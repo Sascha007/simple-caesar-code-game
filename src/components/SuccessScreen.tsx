@@ -47,7 +47,7 @@ const SuccessScreen: React.FC<SuccessScreenProps> = ({ onPlayAgain, gameStats })
           </div>
           <div className="bg-purple-500/20 rounded-lg p-6 border border-purple-400/50">
             <div className="text-4xl mb-2">💡</div>
-            <p className="text-purple-200 text-sm mb-1">Hints Used</p>
+            <p className="text-purple-200 text-sm mb-1">{t('success.hintsUsed')}</p>
             <p className="text-2xl font-bold text-white">{gameStats.hintsUsed}</p>
           </div>
         </div>
