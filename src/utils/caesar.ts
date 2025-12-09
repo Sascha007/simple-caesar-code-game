@@ -1,3 +1,9 @@
+// Regular expression to match control characters for security sanitization
+// Removes C0 control characters (0x00-0x1F) and C1 control characters (0x7F-0x9F)
+// These characters can be used in various injection attacks and should be stripped from user input
+// eslint-disable-next-line no-control-regex -- Control character ranges are intentional for security
+const CONTROL_CHARS_REGEX = /[\x00-\x1F\x7F-\x9F]/g;
+
 /**
  * Encrypts text using Caesar cipher
  * @param text - The plaintext to encrypt
@@ -53,7 +59,7 @@ export function normalizeText(text: string): string {
   }
   // Remove any control characters and normalize whitespace
   return text
-    .replace(/[\x00-\x1F\x7F-\x9F]/g, '') // eslint-disable-line no-control-regex -- Remove control characters for security
+    .replace(CONTROL_CHARS_REGEX, '') // Remove control characters for security
     .toLowerCase()
     .trim()
     .replace(/\s+/g, ' ');
