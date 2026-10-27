@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import IntroScreen from './components/IntroScreen';
 import GameScreen from './components/GameScreen';
@@ -56,11 +56,8 @@ function App() {
     setEncryptedMessage(caesarEncrypt(randomMessage, randomShift));
   };
 
-  // Initialize game on mount
-  useEffect(() => {
-    initializeGame();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // Note: no mount effect needed – every transition into 'playing'
+  // (handleStart / handleRestart) calls initializeGame() first.
 
   const handleStart = () => {
     initializeGame();
