@@ -11,11 +11,24 @@ updates:
     schedule:
       interval: "weekly"
     open-pull-requests-limit: 10
-    
+    groups:
+      # Minor- und Patch-Updates in einem gemeinsamen PR bündeln;
+      # Major-Updates kommen weiterhin als einzelne PRs.
+      npm-minor-patch:
+        applies-to: version-updates
+        update-types:
+          - "minor"
+          - "patch"
+
   # Enable version updates for GitHub Actions
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "weekly"
     open-pull-requests-limit: 5
-
+    groups:
+      actions-minor-patch:
+        applies-to: version-updates
+        update-types:
+          - "minor"
+          - "patch"
