@@ -19,6 +19,13 @@ updates:
         update-types:
           - "minor"
           - "patch"
+    ignore:
+      # TypeScript 7 lässt sich nicht auflösen: typescript-eslint erlaubt
+      # derzeit nur typescript <6.1, der Dependabot-Lauf schlägt sonst jede
+      # Woche fehl. Entfernen, sobald typescript-eslint TypeScript 7 unterstützt.
+      - dependency-name: "typescript"
+        versions:
+          - ">= 7.0.0"
 
   # Enable version updates for GitHub Actions
   - package-ecosystem: "github-actions"
