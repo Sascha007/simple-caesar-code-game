@@ -20,7 +20,7 @@
 
 ### Prerequisites
 
-- Node.js 20.x or higher
+- Node.js 22.x or higher
 - npm or yarn
 
 ### Installation
